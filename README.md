@@ -4,6 +4,7 @@
 Labeling data for spam classification
 
 [Tutorial](https://www.snorkel.org/use-cases/01-spam-tutorial)
+[Notebook](spam-classification/01-intro-to-labeling-function.ipynb)
 
 ## Intro to Transformation Functions
 Data augmentation for spam classification
