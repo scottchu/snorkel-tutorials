@@ -119,6 +119,27 @@ def preview_tfs(df, tfs):
                 break
     return pd.DataFrame(transformed_examples)
 
+def preview_tf(df, tf, n=20):
+  examples = []
+  for i, row in df.sample(frac=1, random_state=2).iterrows():
+    transformed_or_none = tf(row)
+
+    if transformed_or_none is not None:
+      examples.append(
+        OrderedDict(
+          {
+            "TF Name": tf.name,
+            "Original Text": row.text,
+            "Transformed Text": transformed_or_none.text,
+          }
+        )
+      )
+
+    if len(examples) >= n:
+      break
+
+  return pd.DataFrame(examples)
+
 
 def df_to_features(vectorizer, df, split):
     """Convert pandas DataFrame containing spam data to bag-of-words PyTorch features."""
